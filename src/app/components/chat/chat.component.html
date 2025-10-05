@@ -1,0 +1,8 @@
+<main class="flex-1 overflow-y-auto p-4 space-y-4">
+  <app-message-bubble
+    *ngFor="let msg of messages"
+    [text]="msg.text"
+    [alignment]="msg.type === 'user' ? 'right' : 'left'"
+    [color]="msg.type === 'user' ? 'blue' : 'white'">
+  </app-message-bubble>
+</main>
