@@ -3,10 +3,9 @@ package com.zorpiko.ai.user_service.controller;
 import com.zorpiko.ai.user_service.model.User;
 import com.zorpiko.ai.user_service.service.UserService;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService service;
@@ -15,13 +14,13 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return service.getAllUsers();
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return service.register(user);
     }
 
-    @PostMapping
-    public User createUser(@RequestBody User user) {
-        return service.createUser(user);
+    @PostMapping("/login")
+    public User login(@RequestBody User user) {
+        return service.login(user.getEmail(), user.getPassword());
     }
 }

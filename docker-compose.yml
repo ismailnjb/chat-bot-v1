@@ -2,7 +2,7 @@ version: "3.9"
 services:
   postgres:
     image: postgres:15
-    container_name: chatbot-postgres
+    container_name: user-db
     environment:
       POSTGRES_DB: chatbotdb
       POSTGRES_USER: chatbotuser
@@ -10,3 +10,8 @@ services:
       TZ: Asia/Kolkata
     ports:
       - "5432:5432"
+    volumes:
+      - user-data:/var/lib/postgresql/data
+
+volumes:
+  user-data:

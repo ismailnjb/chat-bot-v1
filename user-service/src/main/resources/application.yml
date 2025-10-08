@@ -1,14 +1,18 @@
 server:
-  port: 8081
+  port: 9081
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/chatbotdb
-    username: chatbotuser
-    password: chatbotpass
+    url: jdbc:postgresql://172.18.0.2:5432/userdb
+    username: postgres
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
   application:
     name: user-service
+  docker:
+    compose:
+      file: ../docker-compose.yml
+      enabled: false
